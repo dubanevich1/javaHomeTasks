@@ -1,6 +1,7 @@
 package first;
 
 public class Reverse {
+
     public static void main(String[] args) {
         int a = 9843217;
         String str = "";
@@ -10,7 +11,7 @@ public class Reverse {
             a = a / 10;
         }
 
-        a = Integer.parseInt(str.trim());
+        a = Integer.parseInt(str); //метод trim удаляет пробелы в начале и в конце строки
         System.out.println(a);
     }
 }

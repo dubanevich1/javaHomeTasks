@@ -1,6 +1,7 @@
 package first;
 
 public class Аverage {
+
     public static void main(String[] args) {
         int a = 984321;
         int[] mass = new int[6];
@@ -14,8 +15,8 @@ public class Аverage {
             prois *= mass[i];
         }
 
-        double srA = (double)summ/6;
-        double srG = Math.pow((double)prois, 1.0/6);
+        double srA = (double) summ / 6;
+        double srG = Math.pow(prois, 1.0 / 6); //приведение не нужно
 
         System.out.println(srA);
         System.out.println(srG);
