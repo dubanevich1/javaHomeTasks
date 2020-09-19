@@ -11,7 +11,17 @@ public class Game {
         System.out.println("Вы начинаете новую игру");
         Player player = new Player();
 
+        //переменные не используются. Достаточно написать new Mob("Скелет")
+        Mob skelet = new Mob("Скелет");
+        Mob zombie = new Mob("Зомби");
+        Mob pavyk = new Mob("Павук");
+        Mob gnom = new Mob("Гном");
+
         while (player.getAlive()) {
+            System.out.println("ХР" +
+                    "" +
+                    " " + player.getHealth() + "\nЕХР " + player.getExp()
+                    + "\nБлоков " + player.getBlockCount() + "\nМобов на карте:" + Mob.mobList.size());
             command = scanner.nextLine();
             switch (command) {
                 case "Поставить блок": {
@@ -19,7 +29,7 @@ public class Game {
                     break;
                 }
                 case "Добыть блок": {
-                    player.getBlock();
+                    player.raiseBlock();
                     break;
                 }
                 case "Кушать": {
@@ -37,6 +47,9 @@ public class Game {
                 case "Выход": {
                     System.exit(0);
                     break;
+                }
+                default:{
+                    System.out.println("Неизвестная комманда");
                 }
             }
         }
