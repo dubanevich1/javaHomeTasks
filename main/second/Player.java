@@ -1,27 +1,9 @@
 package second;
 
-public class Player {
-    private int health;
-    private int damage;
+public class Player extends Entity {
+
     private int blockCount;
     private int exp;
-    private boolean isAlive;
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getDamage() {
-        return health;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
 
     public int getExp() {
         return exp;
@@ -39,20 +21,13 @@ public class Player {
         this.blockCount = blockCount;
     }
 
-    public boolean getAlive() {
-        return isAlive;
-    }
-
-    public void setAlive(boolean isAlive) {
-        this.isAlive = isAlive;
-    }
 
     public Player() {
-        health = 100;
-        damage = 30;
+        this.setHealth(100);
+        this.setDamage(30);
         blockCount = 10;
         exp = 0;
-        isAlive = true;
+        this.setAlive(true);
     }
 
     public Player(int health, int damage, int blockCount, int exp, boolean isAlive) {
@@ -76,7 +51,7 @@ public class Player {
 
     public void eat() {
         System.out.println("Восстановлено 10хп");
-        health += 10;
+        this.setHealth( this.getHealth() + 10);
     }
 
     public void fight() {
@@ -86,16 +61,16 @@ public class Player {
         }
         Mob mob = Mob.mobList.get((int) (Math.random() * Mob.mobList.size()));
         while (mob.getAlive()) {
-            System.out.println("Вы наносите " + mob.getName() + " " + damage + " урона и получаете урон в размере " + mob.getDamage() + " едениц");
-            mob.setHealth(mob.getHealth() - damage);
-            health -= mob.getDamage();
+            System.out.println("Вы наносите " + mob.getName() + " " + this.getDamage() + " урона и получаете урон в размере " + mob.getDamage() + " едениц");
+            mob.setHealth(mob.getHealth() - this.getDamage());
+            this.setHealth(this.getHealth() - mob.getDamage());
             if (mob.getHealth() <= 0) {
                 mob.setAlive(false);
                 exp += 20;
                 System.out.println("Получено 20 опыта");
             }
-            if (health <= 0) {
-                isAlive = false;
+            if (this.getHealth() <= 0) {
+                this.setAlive(false);
                 System.out.println("Вы умерли в бою");
                 return;
             }

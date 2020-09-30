@@ -18,7 +18,7 @@ public class Game {
         Mob gnom = new Mob("Гном");
 
         while (player.getAlive()) {
-            System.out.println("ХР" +
+            System.out.println("HР" +
                     "" +
                     " " + player.getHealth() + "\nЕХР " + player.getExp()
                     + "\nБлоков " + player.getBlockCount() + "\nМобов на карте:" + Mob.mobList.size());
